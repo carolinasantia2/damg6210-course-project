@@ -1,0 +1,29 @@
+============================================================
+TEAM GIT WORKFLOW: HOW TO WORK SAFELY ON OUR PROJECT
+============================================================
+
+To keep our main code safe, you cannot push changes directly to the 'main' branch. Instead, follow these 4 simple steps to do your work.
+
+STEP 1: GET THE LATEST CODE
+Before starting any new work, make sure your local project is up to date.
+Command: git checkout main && git pull
+
+STEP 2: CREATE YOUR OWN WORK BRANCH
+Never work directly on main. Create a personal branch named after what you are building.
+Command: git checkout -b feature/your-name-task-name
+(Example: git checkout -b feature/sam-update-logos)
+
+STEP 3: SAVE AND UPLOAD YOUR WORK
+As you make changes, save your progress and send it up to GitHub.
+Command: git add .
+Command: git commit -m "Briefly describe what you changed"
+Command: git push origin feature/your-name-task-name
+
+STEP 4: ASK FOR REVIEW (PULL REQUEST)
+1. Go to our project page on GitHub.com.
+2. You will see a yellow banner saying "Compare & pull request". Click it!
+3. Fill out the template form (describe what you did).
+4. Submit it. 
+
+The project lead will review your code. Once approved, it will be safely merged into the main project!
+============================================================
