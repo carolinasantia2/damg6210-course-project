@@ -174,10 +174,10 @@ git checkout main && git pull
 Never work directly on `main`. Create a personal branch named after what you are building.
 
 ```bash
-git checkout -b feature/your-name-task-name
+git checkout -b name/task-name
 ```
 
-Example: `git checkout -b feature/sam-staff-tables`
+Example: `git checkout -b sam/03staff-time`
 
 ### Step 3: Save and upload your work
 
