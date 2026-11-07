@@ -10,17 +10,17 @@ CREATE TABLE dbo.PaymentMethod (
         FOREIGN KEY (CustomerID) REFERENCES dbo.Customer (CustomerID),
  
     -- CHECK #4: only digits, exactly four of them
-    CONSTRAINT CK_PaymentMethod_LastFour
+    CONSTRAINT CK_PaymentMethod_LastFourDigits 
         CHECK (LastFourDigits LIKE '[0-9][0-9][0-9][0-9]'),
  
     -- CHECK #5: supported card brands
     CONSTRAINT CK_PaymentMethod_CardType
-        CHECK (CardType IN ('Visa','Mastercard','Amex','Discover','Debit')),
+        CHECK (CardType IN ('Visa','Mastercard','Amex','Discover')),
  
     -- CHECK #6: cards expire at month end (MM/YY), so the stored date must
     --           be the last day of its month. Deliberately NOT "in the
     --           future" – that would make old rows invalid over time.
-    CONSTRAINT CK_PaymentMethod_ExpirationMonthEnd
+    CONSTRAINT CK_PaymentMethod_ExpirationDate 
         CHECK (ExpirationDate = EOMONTH(ExpirationDate))
 );
 GO

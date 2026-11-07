@@ -1,8 +1,8 @@
 CREATE TABLE dbo.Appointment (
     AppointmentID INT IDENTITY(1,1) NOT NULL,
     CustomerID    INT               NOT NULL,
-    BookedAt      DATETIME2(0)      NOT NULL
-        CONSTRAINT DF_Appointment_BookedAt DEFAULT (SYSDATETIME()),
+    BookedAt      DATETIME      NOT NULL
+        CONSTRAINT DF_Appointment_BookedAt DEFAULT (GETDATE()),
  
     CONSTRAINT PK_Appointment PRIMARY KEY (AppointmentID),
     CONSTRAINT FK_Appointment_Customer
@@ -14,7 +14,4 @@ CREATE TABLE dbo.Appointment (
 );
 GO
    
-CREATE UNIQUE INDEX UX_Customer_Email
-    ON dbo.Customer (Email) WHERE Email IS NOT NULL;
-GO
  
