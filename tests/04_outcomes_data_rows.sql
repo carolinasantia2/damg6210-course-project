@@ -1,6 +1,4 @@
 -- Run after seeding Booking Core and Outcomes. Every row count should be OK.
-USE AppointmentBookingTest;
-GO
 SELECT t.TableName, t.Expected, t.Actual,
        CASE WHEN t.Actual = t.Expected THEN 'OK' ELSE 'CHECK' END AS Result
 FROM (
