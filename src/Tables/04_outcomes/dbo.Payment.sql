@@ -1,11 +1,12 @@
 CREATE TABLE dbo.Payment (
-    PaymentID INT IDENTITY(1,1) NOT NULL,
-    AppointmentID INT NOT NULL,
-    PaymentMethodID INT NOT NULL,
-    Amount DECIMAL(10,2) NOT NULL,
-    Status VARCHAR(20) NOT NULL,
-    ChargedAt DATETIME NOT NULL,
-    Type VARCHAR(30) NOT NULL,
+    PaymentID       INT IDENTITY(1,1) NOT NULL,
+    AppointmentID   INT NOT NULL,
+    PaymentMethodID INT NULL,
+    Amount          DECIMAL(10,2) NOT NULL,
+    Status          VARCHAR(20) NOT NULL,
+    ChargedAt       DATETIME NOT NULL,
+    Type            VARCHAR(30) NOT NULL,
+
     CONSTRAINT PK_Payment PRIMARY KEY (PaymentID),
     CONSTRAINT FK_Payment_Appointment FOREIGN KEY (AppointmentID)
         REFERENCES dbo.Appointment (AppointmentID),
