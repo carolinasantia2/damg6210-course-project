@@ -9,16 +9,16 @@ CREATE TABLE dbo.Customer (
         CONSTRAINT DF_Customer_RegistrationDate DEFAULT(GETDATE()),
     CONSTRAINT PK_Customer PRIMARY KEY (CustomerID),
 
-    --CHECK 1.a customer must be reachable by at least one channel 
+    -- Customer must be reachable by at least one channel 
     CONSTRAINT CK_Customer_HasContact 
         CHECK (Email is not null or PhoneNumber is not null),
-    --CHECK 2.prefereed contact must be a supported channel and actually be on file 
+    -- Preferred contact must be a supported channel and actually be on file 
     CONSTRAINT CK_Customer_PreferredContact 
         CHECK (
                 (CustomerPreferredContact = 'Email' AND Email is not null) 
              OR  (CustomerPreferredContact IN ('Phone','SMS') AND PhoneNumber is not null)
 ),
-    --CHECK 3.Email (xyz@xyz.xyz)
+    -- Email (xyz@xyz.xyz)
     CONSTRAINT CK_Customer_Email 
         CHECK (Email is null or Email LIKE '%_@_%._%')
 );

@@ -8,7 +8,7 @@ CREATE TABLE dbo.Appointment (
     CONSTRAINT FK_Appointment_Customer
         FOREIGN KEY (CustomerID) REFERENCES dbo.Customer (CustomerID),
  
-    -- CHECK #7: sanity floor on booking timestamps
+    -- Sanity floor on booking timestamps
     CONSTRAINT CK_Appointment_BookedAt
         CHECK (BookedAt >= '2020-01-01')
 );

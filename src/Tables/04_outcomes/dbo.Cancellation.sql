@@ -1,3 +1,9 @@
+-- Cancellation: the record of one cancelled appointment
+-- (1 Appointment : 0-1 Cancellation, enforced by the UNIQUE constraint on
+-- AppointmentID). FeeCharged follows the appointment location's
+-- CancellationPolicy and is withheld from the deposit, and RefundAmount
+-- is what's returned to the customer.
+-- Must be created AFTER dbo.Appointment.
 CREATE TABLE dbo.Cancellation (
     CancellationID INT IDENTITY(1,1) NOT NULL,
     AppointmentID  INT NOT NULL,

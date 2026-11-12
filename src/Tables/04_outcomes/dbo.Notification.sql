@@ -1,3 +1,8 @@
+-- Notification: a message sent to a customer about one appointment
+-- (1 Customer : many Notifications, 1 Appointment : many Notifications).
+-- CustomerID must match the appointment's customer. A CHECK can't look at
+-- another table, so that rule is verified in tests/04_outcomes_data_rows.sql.
+-- Must be created AFTER dbo.Customer and dbo.Appointment.
 CREATE TABLE dbo.Notification (
     NotificationID INT IDENTITY(1,1) NOT NULL,
     CustomerID     INT NOT NULL,
