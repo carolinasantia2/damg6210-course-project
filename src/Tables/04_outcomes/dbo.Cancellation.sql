@@ -2,7 +2,8 @@
 -- (1 Appointment : 0-1 Cancellation, enforced by the UNIQUE constraint on
 -- AppointmentID). FeeCharged follows the appointment location's
 -- CancellationPolicy and is withheld from the deposit, and RefundAmount
--- is what's returned to the customer.
+-- is what's returned to the customer. CancelledBy is limited to
+-- 'Customer' or 'Business', since the fee rule depends on which one it was.
 -- Must be created AFTER dbo.Appointment.
 CREATE TABLE dbo.Cancellation (
     CancellationID INT IDENTITY(1,1) NOT NULL,
@@ -18,6 +19,7 @@ CREATE TABLE dbo.Cancellation (
         REFERENCES dbo.Appointment (AppointmentID),
     CONSTRAINT UQ_Cancellation_AppointmentID UNIQUE (AppointmentID),
     CONSTRAINT CK_Cancellation_FeeCharged CHECK (FeeCharged >= 0),
-    CONSTRAINT CK_Cancellation_RefundAmount CHECK (RefundAmount >= 0)
+    CONSTRAINT CK_Cancellation_RefundAmount CHECK (RefundAmount >= 0),
+    CONSTRAINT CK_Cancellation_CancelledBy CHECK (CancelledBy IN ('Customer', 'Business'))
 );
 GO
