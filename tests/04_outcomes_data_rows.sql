@@ -27,7 +27,7 @@ FROM (
 SELECT s.ObjectType, s.Expected, s.Actual,
        CASE WHEN s.Actual = s.Expected THEN 'OK' ELSE 'CHECK' END AS Result
 FROM (
-    SELECT 'CHECK constraints (Payment 3, Cancellation 2, Notification 2)' AS ObjectType, 7 AS Expected,
+    SELECT 'CHECK constraints (Payment 3, Cancellation 3, Notification 2)' AS ObjectType, 8 AS Expected,
            (SELECT COUNT(*) FROM sys.check_constraints
              WHERE parent_object_id IN (OBJECT_ID('dbo.Payment'), OBJECT_ID('dbo.Cancellation'),
                                         OBJECT_ID('dbo.Notification'))) AS Actual
